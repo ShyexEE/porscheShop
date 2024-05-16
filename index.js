@@ -23,6 +23,7 @@ const db = new pg.Client({
   });
 db.connect();
 
+
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +37,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
+app.get("/", async (req, res) => {
+   res.send("Server it's working")
+})
+
+app.get("/data", async (req, res) => {
+    res.send("Data is Muahaha")
+ })
 
 app.get("/model/:id", async (req, res) => {
     console.log("This is the params : "+ req.params.id)
