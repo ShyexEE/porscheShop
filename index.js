@@ -216,6 +216,7 @@ var currentId = {id:""}
 
 app.post("/api/login-password", async function(req, res){
    const email = req.body.email
+   var emailll = req.body.email
    const loginPassword = req.body.password 
    try{
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
