@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url); // get the resolved path to t
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port= 3000;
+const port= 5000;
 const saltRounds = 10;
 env.config();
 
@@ -31,11 +31,11 @@ db.connect();
 
 
 app.use(cors({
-    origin: 'https://porscheshop.onrender.com', 
+    origin: "https://porscheshop.onrender.com", 
     methods: 'GET,POST,PUT,DELETE',
     credentials: true
   }))
-
+//'https://porscheshop.onrender.com'
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
