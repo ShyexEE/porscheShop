@@ -208,6 +208,8 @@ app.get("/api/login-password", async (req, res) =>{
 })
 
 
+
+
 let status = {status: false}
 var currentId = {id:""}
 
@@ -244,6 +246,15 @@ app.post("/api/login-password", async function(req, res){
   }
 })
 
+app.get("/api/backendifo", async (req, res) =>{
+    res.send({
+     currentId: currentId.id,
+     email: email,
+     isLoggedin: status.status,
+     hashpassword: storedHashedPassword,
+     loginPass: loginPassword,
+    })
+})
 
 
  //Handle all other routes by serving the React app
