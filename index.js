@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url); // get the resolved path to t
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port= 5000;
+const port= 3000;
 const saltRounds = 10;
 env.config();
 
@@ -216,11 +216,14 @@ var currentId = {id:""}
 var emailll 
 var lggn
 var hsh
+
+
 app.post("/api/login-password", async (req, res)=>{
    const email = req.body.email
     emailll = req.body.email
    const loginPassword = req.body.password 
     lggn = req.body.password 
+    console.log(email)
    try{
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
         email
@@ -250,6 +253,7 @@ app.post("/api/login-password", async (req, res)=>{
     console.log(err)
   }
 })
+
 
 app.get("/api/backendifo", async (req, res) =>{
     res.send({
