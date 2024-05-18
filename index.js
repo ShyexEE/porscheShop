@@ -173,7 +173,6 @@ app.post("/api/signup", async (req, res)=>{
     else{var fullName =  body.fName+" "+body.mName+" "+ body.lName}
     const email = body.email
     const password = body.password1  
-
     try{
      const result  = await db.query("SELECT * FROM porscheusers WHERE email = $1",[email])
      if(result.rows.length>0){
@@ -213,7 +212,6 @@ let status = {status: false}
 var currentId = {id:""}
 
 
-
 app.post("/api/login-password", async function(req, res){
    const email = req.body.email
    const loginPassword = req.body.password 
@@ -221,8 +219,6 @@ app.post("/api/login-password", async function(req, res){
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
         email
     ]);
-    
-    
      if(result.rows.length > 0){
       const user = result.rows[0];
         var storedHashedPassword = user.password;

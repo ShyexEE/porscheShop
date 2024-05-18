@@ -335,9 +335,9 @@
   }
   }
 @media (max-width: 1920px) and (max-height:1080px){
-    .loginBody{
+      .loginBody{
         grid-template-columns:1228px 692px;
-        grid-template-rows: 906px 47px;
+        grid-template-rows: 1000px 47px;
       }
 }
 /*Ipad Pro*/
