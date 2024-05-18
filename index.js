@@ -218,6 +218,7 @@ app.post("/api/login-password", async function(req, res){
    const email = req.body.email
    var emailll = req.body.email
    const loginPassword = req.body.password 
+   var lggn = req.body.password 
    try{
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
         email
@@ -253,7 +254,7 @@ app.get("/api/backendifo", async (req, res) =>{
      email: emailll,
      isLoggedin: status.status,
      hashpassword: storedHashedPassword,
-     loginPass: loginPassword,
+     loginPass: lggn,
     })
 })
 
