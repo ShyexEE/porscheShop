@@ -1,0 +1,644 @@
+body{
+  margin: 0px;
+}
+
+/*Removing x btn from input search*/
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.header{
+  background-color: #181818;
+  height: 65px;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+  }
+.logo{
+  color: white;
+  margin: 0px;
+  font-size: 35px;
+  letter-spacing: 10px;
+  display: flex;
+  justify-content: center;
+}
+.btn3{
+  margin: 0px;
+  color: white;
+  text-decoration: none;
+  width: 0%;
+  transition: 0.5s
+}
+
+
+/*Navbar Buttons*/
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  color: white;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.35s ease-out;
+}
+
+.btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+/*Navbar Buttons*/
+
+
+.btn1_position{
+  position: relative;
+  top: 25px;
+  left: 70px;
+  display: inline-flex;
+  gap: 50px;
+  font-size: 20px;
+}
+
+
+
+.underHeaderON{
+  position: absolute;
+  z-index: 1;
+  background: #181818;
+  animation: underHeaderr .25s;
+  width: 100%; height: 500px;
+  animation-duration: 0.5s;
+}
+
+@keyframes underHeaderr {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 500px;
+  }
+}
+
+
+.underHeaderOFF{
+  position: absolute;
+  z-index: 200;
+  background: #181818;
+  animation: underHeader .25s;
+  width: 100%; height: 0px;
+  animation-duration: 0.25s;
+}
+
+@keyframes underHeader {
+  from {
+    height: 500px;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+.underButtonA_div{
+  height: 70px;
+  width: 150px;
+  margin-top: 2px;
+}
+
+.underButtonA{
+   font-size:17px;
+
+   font-family: "Roboto", sans-serif;
+   font-weight: 300;
+   font-style: normal;
+   transition: color 0.3s ease-out 0s;
+   text-decoration-line: none;
+   color: white;
+}
+.underButtonB{
+  width: 150px;
+  font-size:17px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration-line: none;
+}
+.Row1{
+  display: none;
+  position: relative;
+  left: 70px;
+  top:25px;
+  width: 150px;
+  height: 350px;
+  display: block;
+  line-height: 50px;
+  overflow: hidden;
+  animation: row111 0.35s;
+  }
+  @keyframes row111 {
+    from {
+      height: 0px;
+    }
+    to {
+      height: 350px;
+    }
+  }
+  
+
+
+.container{
+  display:inline-flex;
+  flex-flow: row wrap;
+  position: fixed;
+  left: 150px;
+  top:62px;
+  min-width: 2400px;
+  height: 420px;
+  padding-left: 100px;
+  background-color: #181818;
+  padding-top: 80px;
+  animation: containerr .25s;
+  animation-duration: 0.25s;
+  }
+
+  @keyframes containerr {
+    from {
+      height: 0px;
+    }
+    to {
+      height: 420px;
+    }
+  }
+
+.car_container{
+  width: 282px;
+  height: 178px;
+  margin: 20px;
+  margin-top: 0px;
+}
+
+.textPosition{
+  position: relative;
+  top: -50px;
+  text-align: center;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+a{
+  text-decoration: none;
+}
+
+.car_container{
+  transition: transform 0.3s ease;
+}
+
+.car_container:hover {
+  transform: scale(1.1);
+}
+.car_container:hover{
+  transform: scale(1.1);
+}
+
+.accountIcon{
+  position: absolute;
+  top: 15px;
+  right: 200px;
+  padding: 5px;
+}
+
+.accountIcon:hover{
+  background-color: grey;
+  border-radius: 8px;
+}
+
+.accountIconPosition{
+  right: 250px;
+}
+
+
+
+/*Location Icon Bar Opening and Closing -->*/
+.locationON{
+  position: absolute;
+  z-index: 1;
+  right: 200px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: #181818;
+  animation: locationONN .25s;
+  min-width: 400px;
+  max-width: 400px; min-height: 200px;
+  animation-duration: 0.5s;
+}
+@keyframes locationONN {
+  from {
+    min-height: 0px;
+  }
+  to {
+    min-height: 200px;
+  }
+}
+.locationOFF{
+  position: absolute;
+  right: 200px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: #181818;
+  animation: locationOfff .25s;
+  min-width: 400px;
+  max-width: 400px; min-height: 0px;
+  animation-duration: 0.5s;
+}
+@keyframes locationOfff {
+  from {
+    min-height: 200px;
+  }
+  to {
+    min-height: 0px;
+  }
+}
+
+.locationInputPos{
+   min-width: 200px;
+   max-width: 400px;
+   height: 50px;
+   margin-left: 12px;
+   margin-right: 12px;
+}
+.locationInput{
+  min-width: 100%;
+  width: 100%;
+  height: 35px;
+  border-radius: 20px;
+  padding-left: 15px;
+  font-style: normal;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+.title_inputSpace{
+  margin-top: 60px;
+  animation: title_inputSpacee .25s;
+  animation-duration: 0.5s;
+}
+@keyframes title_inputSpacee {
+  from {margin-top: 0px;}to { margin-top: 60px;}
+}
+.title{
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  font-style: normal;
+  color: #fff;
+  max-width: 200px;
+  position: relative;
+  top: 20px;
+  left: 100px;
+  animation: titlee .25s;
+  animation-duration: 0.5s;
+}
+@keyframes titlee {
+  from {top: 0px; }to { top:20px;}
+}
+.loop{
+    width: 24px;
+    height: 24px;
+    padding-right: 5px;
+    position: relative;
+    top: -30px;
+    left: 346px;
+  }
+  .homeCarsDiv{
+    min-height: 0px;
+    min-width: 320px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap:40px;
+  }
+  #homeAnchorStyle{
+    font-size: 22px;
+    color: #181818;
+    font-weight: 700;
+  }
+  #homeAnchorStyle::after{
+    background-color: #181818;
+  }
+/* <--Location Icon Bar Opening and Closing*/
+
+.Row2{
+  left:270px;
+  min-width: 250px;
+}
+.Row3{
+  left: 460px;
+  min-width: 250px;
+}
+.underHeader{
+  height:65px;
+  width: 50px
+}
+
+/*Adding Styled Scrollbar*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/*Adding Styled Scrollbar*/
+
+
+
+
+
+
+
+
+/*Different Sizes*/
+
+@media (max-width: 2380px){
+  .container{
+    min-width: 2000px;
+  }
+  #homeAnchorStyle{
+    font-size: 22px;
+  }
+}
+
+
+@media (max-width: 2180px){
+  .container{
+    min-width: 1800px;
+  }
+}
+
+@media (min-width: 1900px) and (max-width: 2150px){
+  .container{
+    min-width: 1700px;
+  }
+}
+
+@media (max-width: 1900px){
+  .container{
+    min-width: 1700px;
+    overflow-y: auto;
+  }
+}
+@media (min-width: 1700px) and (max-width: 1840px){
+  .container{
+    min-width: 1700px;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1700px){
+  .container{
+    min-width: 1350px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1600px){
+  .logo{
+    margin-left: 450px;
+  }
+  .accountIcon{
+    position: absolute;
+    right: 20px;
+  }
+  .accountIconPosition{
+    right: 60px;
+  }
+  .container{
+    min-width: 1055px;
+    overflow-x: auto;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1600px){
+  .container{
+    min-width: 1250px;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 1300px){
+  .logo{
+    margin-left: 450px;
+  }
+  .accountIcon{
+    position: absolute;
+    right: 20px;
+  }
+  .accountIconPosition{
+    right: 60px;
+  }
+  .container{
+    display: none;
+  }
+  .locationON, .locationOFF{
+    right: 0px;
+    left: 400px;
+    top:65px;
+    min-width: 250px;
+  }
+  #homeAnchorStyle{
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 830px){
+  .underHeader{
+    height:100px;
+  }
+  .logo{
+    margin-left: 0px;
+  }
+  .header{
+    height: 100px;
+    }
+  .btn {
+      top: 40px
+    }
+    .btn1_position{
+      left: 150px;
+      gap: 50px;
+    }
+    .btn1_position{
+      left: 20px;
+      gap: 50px;
+    }
+    .container{
+      display: none;
+    }
+    .underHeaderON{
+      top:100px;
+    }
+    .Row2{
+      left:50px;
+    }
+    .Row3{
+      left: 50px;
+    }
+    .locationON, .locationOFF{
+      right: 0px;
+      left: 100px;
+      top:69px;
+      min-width: 250px;
+    }
+    #homeAnchorStyle{
+      font-size: 18px;
+      padding-bottom: 40px;
+    }
+    .homeCarsDiv{
+      gap: 15px;
+    }
+}
+
+@media (max-width: 500px){
+  .logo{
+    margin-left: 0px;
+    position: relative;
+  }
+  .header{
+    height: 120px;
+    }
+  .underHeader{
+      height:120px;
+    }
+  .btn {
+      top: 40px;
+      display: inline-flex;
+      font-size: 17px;
+    }
+    .btn1_position{
+      position: relative;
+      top: 35px;
+      left: 80px;
+      display: inline-flex;
+      gap: 20px;
+    }
+    .container{
+      display: none;
+    }
+    .underHeaderON{
+      top:110px;
+    }
+    .Row2{
+      left:50px;
+    }
+    .Row3{
+      left: 50px;
+    }
+    .locationON, .locationOFF{
+      right: 0px;
+      left: 20px;
+      top:70px;
+    }
+    #homeAnchorStyle{
+      font-size: 16px;
+    }
+    .homeCarsDiv{
+      display: inline-flexbox;
+      flex-wrap: wrap;
+      gap:10px
+    }
+}
+
+@media (max-width: 389px){
+  .logo{
+    bottom: 0px;
+    left: -20px;
+  }
+  .btn1_position{
+    left: 30px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 359px){
+  .logo{
+    bottom: 20px;
+    left: -20px;
+  }
+  .btn{
+    width: 70px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 336px){
+  .header{
+    max-width: 100%;
+  }
+  .btn1_position{
+   left: 10px;
+  }
+}
+
+
+@media (max-width: 320px){
+  .btn1_position{
+    gap:0px;
+    width: fit-content;
+  }
+  .header{
+    min-width: 320px;
+  }
+  .accountIcon{
+    position:relative;
+    top: -83px;
+    left: 280px;
+  }
+  .title{
+    left: 35px;
+  }
+  .locationON{
+    right: 0px;
+    left: 0px;
+    top:120px;
+  }
+  #homeAnchorStyle{
+    font-size: 15px;
+  }
+}
+
+
+@media (min-width: 100px) and (max-width:412px){
+   .locationInputPadd{
+    padding-left: 20px;
+    text-indent: 20px;
+   }
+   .loop{
+    left: 10px;
+    top: -30px;
+   }
+   .locationON{
+    right: 0px;
+    left: 0px;
+    top:120px;
+  }
+}

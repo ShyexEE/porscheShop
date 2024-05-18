@@ -7,9 +7,15 @@ import bcrypt from "bcrypt"
 import session from "express-session"
 import passport from "passport"
 import env from "dotenv"
+import path from "path";
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const port= process.env.PORT || 5000;
+const port= 5000;
 const saltRounds = 10;
 env.config();
 
@@ -27,7 +33,9 @@ db.connect();
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave:false,
@@ -46,9 +54,7 @@ app.get("/data", async (req, res) => {
     res.send("Data is Muahaha")
  })
 
-app.get("/model/:id", async (req, res) => {
-    console.log("This is the params : "+ req.params.id)
-    console.log("this is the length: ", porsche.taycan.models.length)
+app.get("/api/model/:id", async (req, res) => {
      if(req.params.id === "taycan"){
      res.send(model(porsche.taycan))
       }
@@ -117,9 +123,7 @@ function model(porscheCar){
 app.get("/details", async (req, res)=> {
      try{
       const result = await db.query("SELECT * FROM porscheusers WHERE id=$1",[currentId.id]);
-      console.log("Database name is: ", result.rows[0].name)
       const details = JSON.parse(result.rows[0].details)
-      console.log(details)
       res.send({
         name:result.rows[0].name,
         details: details
@@ -173,7 +177,6 @@ app.post("/signup", async (req, res)=>{
     try{
      const result  = await db.query("SELECT * FROM porscheusers WHERE email = $1",[email])
      if(result.rows.length>0){
-         console.log("User already exists")
          accountExists.status=true
      }else{
         //hashing Password
@@ -201,12 +204,12 @@ app.get("/isLoggedIn", async (req, res)=>{
     res.send(status)
 })
 
-
-app.get("/login-password", async function(req, res){
+app.get("/login-password", async (req, res) =>{
     res.send(status)
 })
 
-var status = {status: false}
+
+let status = {status: false}
 var currentId = {id:""}
 
 
@@ -214,13 +217,13 @@ var currentId = {id:""}
 app.post("/login-password", async function(req, res){
    const email = req.body.email
    const loginPassword = req.body.password 
-   console.log(email, loginPassword)
+  
    try{
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
         email
     ]);
     
-    console.log("This is Login resukt",result.rows[0].email)
+    
      if(result.rows.length > 0){
       const user = result.rows[0];
         var storedHashedPassword = user.password;
@@ -246,6 +249,12 @@ app.post("/login-password", async function(req, res){
   }
 })
 
+
+
+ //Handle all other routes by serving the React app
+ app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 //res.json({"users": ["Taycan its the best"]})
 app.listen(port, () => {
