@@ -139,7 +139,7 @@ app.get("/api/custom", async (req, res) => {
 })
 
 
-app.post("/custom", async (req, res)=>{
+app.post("/api/custom", async (req, res)=>{
   try{
     const result = await db.query("SELECT details FROM porscheusers WHERE id=$1",[currentId.id]);
     if(result.rows[0].details){  //if one object its already in the array push the new one in the array
@@ -167,7 +167,7 @@ app.get("/api/signup", async (req, res)=>{
 })
 var accountExists = {status: false}
 
-app.post("/signup", async (req, res)=>{
+app.post("/api/signup", async (req, res)=>{
     const body = req.body
     if(body.mName.length===0){var fullName = body.fName+" "+ body.lName}
     else{var fullName =  body.fName+" "+body.mName+" "+ body.lName}
@@ -196,7 +196,7 @@ app.post("/signup", async (req, res)=>{
     }
 });
 
-app.post("/signout", async (req, res)=>{
+app.post("/api/signout", async (req, res)=>{
     status.status=false
 })
 
@@ -214,7 +214,7 @@ var currentId = {id:""}
 
 
 
-app.post("/login-password", async function(req, res){
+app.post("/api/login-password", async function(req, res){
    const email = req.body.email
    const loginPassword = req.body.password 
   
