@@ -213,12 +213,14 @@ app.get("/api/login-password", async (req, res) =>{
 let status = {status: false}
 var currentId = {id:""}
 
-
-app.post("/api/login-password", async function(req, res){
+var emailll 
+var lggn
+var hsh
+app.post("/api/login-password", async (req, res)=>{
    const email = req.body.email
-   var emailll = req.body.email
+    emailll = req.body.email
    const loginPassword = req.body.password 
-   var lggn = req.body.password 
+    lggn = req.body.password 
    try{
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
         email
@@ -226,6 +228,7 @@ app.post("/api/login-password", async function(req, res){
      if(result.rows.length > 0){
       const user = result.rows[0];
         var storedHashedPassword = user.password;
+        hsh = user.password
      bcrypt.compare(loginPassword, storedHashedPassword, (err, result)=>{
         if (err){
             console.log("Error comparing passwords", err)
@@ -253,7 +256,7 @@ app.get("/api/backendifo", async (req, res) =>{
      currentId: currentId.id,
      email: emailll,
      isLoggedin: status.status,
-     hashpassword: storedHashedPassword,
+     hashpassword: hsh,
      loginPass: lggn,
     })
 })
