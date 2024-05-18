@@ -250,7 +250,7 @@ app.post("/api/login-password", async function(req, res){
 app.get("/api/backendifo", async (req, res) =>{
     res.send({
      currentId: currentId.id,
-     email: email,
+     email: emailll,
      isLoggedin: status.status,
      hashpassword: storedHashedPassword,
      loginPass: loginPassword,
