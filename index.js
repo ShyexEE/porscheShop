@@ -24,8 +24,8 @@ const db = new pg.Client({
     host: process.env.PG_HOST,
     database: process.env.PG_DATABASE,
     password: process.env.PG_PASSWORD,
-    port: process.env.PG_PORT,
-    ssl:true
+    port: process.env.PG_PORT
+    
   });
 db.connect();
 
@@ -46,11 +46,11 @@ app.use(passport.session());
 
 
 
-app.get("/", async (req, res) => {
+app.get("/api/", async (req, res) => {
    res.send("Server it's working")
 })
 
-app.get("/data", async (req, res) => {
+app.get("/api/data", async (req, res) => {
     res.send("Data is Muahaha")
  })
 
@@ -120,7 +120,7 @@ function model(porscheCar){
     }
 }
 
-app.get("/details", async (req, res)=> {
+app.get("/api/details", async (req, res)=> {
      try{
       const result = await db.query("SELECT * FROM porscheusers WHERE id=$1",[currentId.id]);
       const details = JSON.parse(result.rows[0].details)
@@ -134,7 +134,7 @@ app.get("/details", async (req, res)=> {
 })
 
 
-app.get("/custom", async (req, res) => {
+app.get("/api/custom", async (req, res) => {
     res.send(status)
 })
 
@@ -162,7 +162,7 @@ app.post("/custom", async (req, res)=>{
 });
 
 
-app.get("/signup", async (req, res)=>{
+app.get("/api/signup", async (req, res)=>{
     res.send(accountExists)
 })
 var accountExists = {status: false}
@@ -200,11 +200,11 @@ app.post("/signout", async (req, res)=>{
     status.status=false
 })
 
-app.get("/isLoggedIn", async (req, res)=>{
+app.get("/api/isLoggedIn", async (req, res)=>{
     res.send(status)
 })
 
-app.get("/login-password", async (req, res) =>{
+app.get("/api/login-password", async (req, res) =>{
     res.send(status)
 })
 
