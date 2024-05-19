@@ -198,35 +198,17 @@ app.post("/api/signup", async (req, res)=>{
     }
 });
 
-app.post("/api/signout", async (req, res)=>{
-    status.status=false
-})
-
-app.get("/api/isLoggedIn", async (req, res)=>{
-    res.send(status)
-})
-
-//app.get("/api/login-password", async (req, res) =>{
- //   res.send(status)
-//})
-
-
 
 
 let status = {status: false}
 var currentId = {id:""}
 
-var emailll 
-var lggn
-var hsh
 
-
-app.put("/api/login-password", async (req, res)=>{
+app.post("/api/login-password", async (req, res)=>{
    const email = req.body.email
-    emailll = req.body.email
+  
    const loginPassword = req.body.password 
-    lggn = req.body.password 
-    console.log(email)
+   
    try{
     const result = await db.query("SELECT * FROM porscheusers WHERE email=$1",[
         email
@@ -234,7 +216,6 @@ app.put("/api/login-password", async (req, res)=>{
      if(result.rows.length > 0){
       const user = result.rows[0];
         var storedHashedPassword = user.password;
-        hsh = user.password
      bcrypt.compare(loginPassword, storedHashedPassword, (err, result)=>{
         if (err){
             console.log("Error comparing passwords", err)
@@ -258,15 +239,14 @@ app.put("/api/login-password", async (req, res)=>{
 })
 
 
-app.get("/api/backendifo", async (req, res) =>{
-    res.send({
-     currentId: currentId.id,
-     email: emailll,
-     isLoggedin: status.status,
-     hashpassword: hsh,
-     loginPass: lggn,
-    })
+app.post("/api/signout", async (req, res)=>{
+    status.status=false
 })
+
+app.get("/api/isLoggedIn", async (req, res)=>{
+    res.send(status)
+})
+
 
 
  //Handle all other routes by serving the React app
