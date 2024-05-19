@@ -221,7 +221,7 @@ var lggn
 var hsh
 
 
-app.post("/api/login-password", async (req, res)=>{
+app.put("/api/login-password", async (req, res)=>{
    const email = req.body.email
     emailll = req.body.email
    const loginPassword = req.body.password 
