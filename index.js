@@ -209,9 +209,9 @@ app.get("/api/isLoggedIn", async (req, res)=>{
     res.send(status)
 })
 
-app.get("/api/login-password", async (req, res) =>{
-    res.send(status)
-})
+//app.get("/api/login-password", async (req, res) =>{
+ //   res.send(status)
+//})
 
 
 
@@ -224,7 +224,7 @@ var lggn
 var hsh
 
 
-app.post("/apii/login-password", async (req, res)=>{
+app.post("/api/login-password", async (req, res)=>{
    const email = req.body.email
     emailll = req.body.email
    const loginPassword = req.body.password 
