@@ -53,12 +53,13 @@ app.use(passport.session());
 
 
 
-app.get("/api/", async (req, res) => {
+app.get("/api", async (req, res) => {
    res.send("Server it's working")
+   status.status=true
 })
 
 app.get("/api/data", async (req, res) => {
-    res.send("Data is Muahaha")
+    res.send(status)
  })
 
 app.get("/api/model/:id", async (req, res) => {
@@ -209,6 +210,7 @@ var currentId = {id:""}
 
 
 app.post("/api/login-password", async (req, res)=>{
+   await req.body
    const email = req.body.email
    const loginPassword = req.body.password 
    try{
