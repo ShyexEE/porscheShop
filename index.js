@@ -30,7 +30,11 @@ const db = new pg.Client({
 db.connect();
 
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://porscheshop.onrender.com',
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true
+  }))
 //'https://porscheshop.onrender.com'
 
 
