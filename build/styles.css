@@ -538,7 +538,7 @@ a{
     .btn1_position{
       position: relative;
       top: 35px;
-      left: 80px;
+      left: 30px;
       display: inline-flex;
       gap: 20px;
     }
@@ -575,7 +575,7 @@ a{
     left: -20px;
   }
   .btn1_position{
-    left: 30px;
+    left: 20px;
     gap: 10px;
   }
 }
@@ -596,6 +596,7 @@ a{
   }
   .btn1_position{
    left: 10px;
+   gap:0px
   }
 }
 
