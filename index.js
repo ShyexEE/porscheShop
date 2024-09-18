@@ -177,6 +177,7 @@ var accountExists = {status: false}
 
 app.post("/api/signup", async (req, res)=>{
     const body = req.body
+    console.log("This is body ", body)
     if(body.mName.length===0){var fullName = body.fName+" "+ body.lName}
     else{var fullName =  body.fName+" "+body.mName+" "+ body.lName}
     const email = body.email
